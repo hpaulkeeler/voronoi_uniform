@@ -1,6 +1,7 @@
 % This code places uniformly points on cells of a Voronoi tesselation. 
 % This code generates a Voronoi tessellation based on an artibrary point
-% pattern. The Voronoi tesselation is found using the MATLAB function[1], 
+% two-dimensional pattern. 
+% The Voronoi tesselation is found using the MATLAB function[1], 
 % which is based on the Qhull project[2]. 
 %
 % INPUTS:
