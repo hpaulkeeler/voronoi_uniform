@@ -9,7 +9,7 @@ title = {Uniform placement of random points in bounded Voronoi cells},
 year = {2019},
 publisher = {GitHub},
 journal = {GitHub repository},
-howpublished = {\url{github.com/hpkeeler/voronoi_uniform}},
+howpublished = {\url{github.com/hpaulkeeler/voronoi_uniform}},
 commit = {dc3ab3c5d27d96c18969fc9b201b376c2251c423}
 }
 
