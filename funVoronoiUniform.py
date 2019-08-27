@@ -1,3 +1,4 @@
+# uu,vv, indexBounded=funVoronoiUniform(voronoiData)
 # This code places uniformly points on *bounded* cells of a Voronoi
 # tesselation (also called a Voronoi diagram or Dirichlet tesselation).
 # This code uses a Voronoi tessellation based on an artibrary point

@@ -1,3 +1,4 @@
+% function [uu,vv, indexBounded]=funVoronoiUniform(vertexAll,cellAll,xx,yy)
 % This code places uniformly points on *bounded* cells of a Voronoi
 % tesselation (also called a Voronoi diagram or Dirichlet tesselation).
 % This code uses a Voronoi tessellation based on an artibrary point
@@ -19,7 +20,7 @@
 % uu and vv are vectors corresponding to the Cartesian coordinates of the
 % uniformly placed points.
 %
-% indexBounded is an index array for the bounded cells
+% indexBounded is an index vector for the bounded cells.
 %
 % EXAMPLE: consider a point pattern described by 1-D arrays xx and yy,
 % correspondong to the Cartesian coordinates. Then run the MATLAB function
