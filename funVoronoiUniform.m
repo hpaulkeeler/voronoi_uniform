@@ -1,31 +1,34 @@
-% This code places uniformly points on cells of a Voronoi tesselation. 
-% This code generates a Voronoi tessellation based on an artibrary point
-% two-dimensional pattern. 
-% The Voronoi tesselation is found using the MATLAB function[1], 
-% which is based on the Qhull project[2]. 
+% This code places uniformly points on *bounded* cells of a Voronoi
+% tesselation (also called a Voronoi diagram or Dirichlet tesselation).
+% This code uses a Voronoi tessellation based on an artibrary point
+% two-dimensional pattern. The Voronoi tesselation is first found using the
+% MATLAB function[1], which is based on the Qhull project[2].
 %
 % INPUTS:
-% xx and yy are vectors correspondong to the Cartesian 
-% coordinates of the points in a point pattern. xx and yy must have the
-% same length. 
-% 
-% vertexAll and cellAll are data structures that describe the Voronoi
-% tesselation; see MATLAB function voronoin[1].
-% 
-% OUTPUTS: 
+% xx and yy are vectors correspondong to the Cartesian coordinates of the
+% points in the underlying point pattern. xx and yy must have the
+% same length.
+%
+% vertexAll is an array with the Cartesian ccordinates of all the vertices
+% of the Voronoi tessellation.
+% cellAll structure array, where each entry is an array of indices of the
+% vertices describing the Voronoi tesselation; see MATLAB function
+% voronoin[1].
+%
+% OUTPUTS:
 % uu and vv are vectors corresponding to the Cartesian coordinates of the
-% uniformly placed points. 
+% uniformly placed points.
 %
 % indexBounded is an index array for the bounded cells
 %
 % EXAMPLE: consider a point pattern described by 1-D arrays xx and yy,
-% correspondong to the Cartesian coordinates. Then run the MATLAB function 
-% 
+% correspondong to the Cartesian coordinates. Then run the MATLAB function
+%
 % [vertexAll,cellAll]=voronoin([xx(:) yy(:)]);
 %
 % Then the uniform points on bounded cells are obtained with:
-% [uu,vv]=funVoronoiUniform(xx,yy,vertexAll,cellAll);
-% 
+%
+% [uu,vv]=funVoronoiUniform(vertexAll,cellAll,xx,yy);
 %
 % All points (or cells) of the point process are numbered arbitrarily.
 % In each *bounded* Voronoi cell a new point is uniformly placed.
@@ -34,21 +37,27 @@
 % (ie an irregular polygon) with, say, m sides into m scalene triangles.
 % The i th triangle is then randomly chosen based on the ratio of areas.
 % A point is then uniformly placed on the i th triangle (via eq. 1 in [3]).
-% The placement step is repeated for all bounded Voronoi cells.
+% The random placement step is repeated for all bounded Voronoi cells.
 %
-% Author: H.Paul Keeler, 2019
+% Author: H.Paul Keeler, 2019.
+% hpaulkeeler.com
+% github.com/hpaulkeeler/voronoi_uniform
 %
-% [1] http://www.mathworks.com.au/help/matlab/ref/voronoin.html
+% References: [1] http://www.mathworks.com.au/help/matlab/ref/voronoin.html
 % [2] http://www.qhull.org/
 % [2] Osada, R., Funkhouser, T., Chazelle, B. and Dobkin. D.,
 % "Shape distributions", ACM Transactions on Graphics, vol 21, issue 4,
 % 2002
 
 function [uu,vv, indexBounded]=funVoronoiUniform(vertexAll,cellAll,xx,yy)
-%reshape arrays (possibly not necessary if they are already column arrays)
+%reshape vectors (possibly not necessary if they are already column vectors)
 xx=xx(:); yy=yy(:);
 
-numbCells=length(xx); %number of Voronoi cells (including unbounded)
+if length(xx)~=length(yy)
+    error('xx and yy vectors must be the same length');
+end
+
+numbCells=length(xx); %number of Voronoi cells (including unbounded ones)
 
 %initiate arrays
 booleBounded=zeros(numbCells,1);

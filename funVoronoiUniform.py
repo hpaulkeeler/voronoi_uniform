@@ -1,19 +1,17 @@
-# This code places uniformly points on cells of a Voronoi tesselation. 
-# This code generates a Voronoi tessellation based on an artibrary point
-# pattern. The Voronoi tesselation is found using the SciPy function[1], 
-# which is based on the Qhull project[2]. 
+# This code places uniformly points on *bounded* cells of a Voronoi
+# tesselation (also called a Voronoi diagram or Dirichlet tesselation).
+# This code uses a Voronoi tessellation based on an artibrary point
+# two-dimensional pattern. The Voronoi tesselation is first found using the
+# SciPy function[1], which is based on the Qhull project[2].
 #
 # INPUTS:
-# xx and yy are vectors correspondong to the Cartesian 
-# coordinates of the points in a point pattern. xx and yy must have the
-# same length. 
-# 
-# voronoiData is data structure that describes the Voronoi
-# tesselation; see SciPy function voronoin[1].
-# 
-# OUTPUTS: 
+#
+# voronoiData is data structure, created by the SciPy function Voronoi, that 
+# describes the Voronoi tesselation; see SciPy function Voronoi[1].
+#
+# OUTPUTS:
 # uu and vv are vectors corresponding to the Cartesian coordinates of the
-# uniformly placed points. 
+# uniformly placed points.
 #
 # indexBounded is an index array for the bounded cells
 #
@@ -23,12 +21,8 @@
 # voronoiData=Voronoi(np.stack((xx,yy), axis=1));
 #
 # Then the uniform points on bounded cells are obtained with:
-# uu,vv, indexBounded=funVoronoiUniform(xx,yy,voronoiData);
-# 
-# uu and vv are vectors corresponding to the Cartesian coordinates of the
-# uniformly placed points. 
 #
-# indexBounded is an index array for the bounded cells
+# uu,vv, indexBounded=funVoronoiUniform(voronoiData);
 #
 # All points (or cells) of the point process are numbered arbitrarily.
 # In each *bounded* Voronoi cell a new point is uniformly placed.
@@ -37,10 +31,13 @@
 # (ie an irregular polygon) with, say, m sides into m scalene triangles.
 # The i th triangle is then randomly chosen based on the ratio of areas.
 # A point is then uniformly placed on the i th triangle (via eq. 1 in [3]).
-# The placement step is repeated for all bounded Voronoi cells.
+# The random placement step is repeated for all bounded Voronoi cells.
 #
-# Author: H.Paul Keeler, 2019
+# Author: H.Paul Keeler, 2019.
+# hpaulkeeler.com
+# github.com/hpaulkeeler/voronoi_uniform
 #
+# References: 
 # [1] http://scipy.github.io/devdocs/generated/scipy.spatial.Voronoi.html
 # [2] http://www.qhull.org/
 # [2] Osada, R., Funkhouser, T., Chazelle, B. and Dobkin. D.,
@@ -48,13 +45,14 @@
 # 2002
 
 import numpy as np;  # NumPy package for arrays, random number generation, etc
-from scipy.spatial import Voronoi, voronoi_plot_2d #for voronoi tessellation
+from scipy.spatial import Voronoi #for voronoi tessellation
 
-def funVoronoiUniform(voronoiData,xx,yy):
-    #reshape arrays (possibly not necessary if they are already row arrays)
-    xx=xx.flatten(); yy=yy.flatten(); 
-    
-    numbCells=len(xx); #number of Voronoi cells (including unbounded)
+def funVoronoiUniform(voronoiData):
+    #retrieve points of underlying point pattern
+    xx=voronoiData.points[:,0]; #component
+    yy=voronoiData.points[:,1]; #component
+        
+    numbCells=len(xx); #number of Voronoi cells (including unbounded ones)
     
     vertexAll=voronoiData.vertices; #retrieve x/y coordiantes of all vertices
     cellAll=voronoiData.regions; #may contain empty array/set
