@@ -1,15 +1,16 @@
 % This code tests the function funVoronoiUniform, which places a single
-% random point uniformly on *boundeded* Voronoi cells.
+% random point uniformly on *boundeded* Voronoi cells in two dimensions.
 %
 % For the test, a single realization of a (homogeneous) Poisson point
-% process (PPP) is first generated on a rectangle (but any (finite) point
-% pattern can be used). Then the Voronoi tesselation is created by using
-% the MATLAB function[1], which is based on the Qhull project[2]. Then the
-% function funVoronoiUniform is (repeatedly) used to uniformly place a
-% single random point in each *bounded* Voronoi cell. The averages of these
-% random single points are then taken. As the number of simulations (of
-% placing single points) increases, these averages should converge to the
-% centroids (or geometric centres) of all the *bounded* Voronoi cells.
+% process (PPP) is first generated on a rectangle (but any (finite) 
+% two-dimensional point pattern can be used). Then the Voronoi tesselation 
+% is created by using the MATLAB function[1], which is based on the Qhull 
+% project[2]. Then the function funVoronoiUniform is (repeatedly) used to 
+% uniformly place a single random point in each *bounded* Voronoi cell. 
+% The averages of these random single points are then taken. As the number 
+% of simulations (of placing single points) increases, these averages 
+% should converge to the centroids (or geometric centres) of all the 
+% *bounded* Voronoi cells.
 %
 % The placement step is done by first dividing each *bounded* Voronoi cell
 % (ie an irregular polygon) with, say, m sides into m scalene triangles.
@@ -71,7 +72,7 @@ numbCells=numbPoints; %number of Voronoi cells (including unbounded)
 %reshape vectors (possibly not necessary if they are already column vectors)
 xx=xx(:); yy=yy(:);
 xxyy=[xx yy]; %combine x and y coordinates
-%Perform Voronoi tesseslation using built-in function
+%Perform Voronoi tesseslation using built-in function voronoin
 [vertexAll,cellAll]=voronoin(xxyy);
 
 %initiate arrays for empirical estimates of centroids

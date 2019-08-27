@@ -1,9 +1,9 @@
 % function [uu,vv, indexBounded]=funVoronoiUniform(vertexAll,cellAll,xx,yy)
 % This code places uniformly points on *bounded* cells of a Voronoi
 % tesselation (also called a Voronoi diagram or Dirichlet tesselation).
-% This code uses a Voronoi tessellation based on an artibrary point
-% two-dimensional pattern. The Voronoi tesselation is first found using the
-% MATLAB function[1], which is based on the Qhull project[2].
+% This code uses a Voronoi tessellation based on an arbitrary 
+% two-dimensional point pattern. The Voronoi tesselation is first found 
+% using the MATLAB function[1], which is based on the Qhull project[2].
 %
 % INPUTS:
 % xx and yy are vectors correspondong to the Cartesian coordinates of the
@@ -40,11 +40,15 @@
 % A point is then uniformly placed on the i th triangle (via eq. 1 in [3]).
 % The random placement step is repeated for all bounded Voronoi cells.
 %
+% NOTE: This code uses a Voronoi tesselation created by the MATLAB 
+% function voronoin[1], and not the MATLAB function voronoi.
+%
 % Author: H.Paul Keeler, 2019.
 % hpaulkeeler.com
 % github.com/hpaulkeeler/voronoi_uniform
 %
-% References: [1] http://www.mathworks.com.au/help/matlab/ref/voronoin.html
+% References: 
+% [1] http://www.mathworks.com.au/help/matlab/ref/voronoin.html
 % [2] http://www.qhull.org/
 % [2] Osada, R., Funkhouser, T., Chazelle, B. and Dobkin. D.,
 % "Shape distributions", ACM Transactions on Graphics, vol 21, issue 4,
