@@ -1,5 +1,5 @@
 # voronoi_uniform
-Uniformly places a random point in all *bounded* cells of a two-dimensional Voronoi/Dirichlet tesselation of some given point pattern, such as a realization of a (random) point process. 
+Uniformly places a single random point in each *bounded* cell of a two-dimensional Voronoi/Dirichlet tesselation of some given point pattern, such as a single realization of a (random) point process. 
 
 If you use this code in a research publication, please cite this repository:
 
