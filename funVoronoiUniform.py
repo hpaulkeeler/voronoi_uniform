@@ -69,7 +69,7 @@ def funVoronoiUniform(voronoiData):
     for ii in range(numbCells):        
         booleBounded[ii]=not(any(np.array(cellAll[indexP2C[ii]])==-1));
         #checks if the Voronoi cell is bounded. if bounded, calculates its area 
-        #and assigns a single point uniformally in the Voronoi cell.
+        #and assigns a single point uniformly in the Voronoi cell.
         
         ### START -- Randomly place a point in a Voronoi cell -- START###
         if booleBounded[ii]:               

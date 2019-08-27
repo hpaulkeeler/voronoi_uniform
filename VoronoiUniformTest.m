@@ -23,7 +23,7 @@
 % A Voronoi diagram is displayed over the underlying point pattern.
 % Points of the underlying point pattern are marked green and blue if they
 % are located respectively in bounded and unbounded Voronoi cells.
-% The uniformally placed points in the bounded cells are marked red.
+% The uniformly placed points in the bounded cells are marked red.
 %
 % If there are no bounded Voronoi cells, no diagram is created.
 %
@@ -84,17 +84,17 @@ for ss=1:numbSim
     xCentEmp(indexBound)=xCentEmp(indexBound)+uu;
     yCentEmp(indexBound)=yCentEmp(indexBound)+vv;
 end
-numbBound=length(indexBound); %number of bounded cells
+numbBounded=length(indexBound); %number of bounded cells
 
 %estimate empirical centroids
 xCentEmp=xCentEmp(indexBound)/numbSim;
 yCentEmp=yCentEmp(indexBound)/numbSim;
 
 %initiate arrays for (analtic) calculations of centroids
-xCentExact=zeros(numbBound,1); %x component
-yCentExact=zeros(numbBound,1); %y component
+xCentExact=zeros(numbBounded,1); %x component
+yCentExact=zeros(numbBounded,1); %y component
 %loop through for all bounded cells and calculate centroids
-for ii=1:numbBound
+for ii=1:numbBounded
     xxCell=vertexAll(cellAll{indexBound(ii)},1);
     yyCell=vertexAll(cellAll{indexBound(ii)},2);
     polyin = polyshape(xxCell,yyCell);
@@ -103,13 +103,13 @@ for ii=1:numbBound
 end
 
 %%%START -- Plotting section -- START%%%
-if (numbBound>0)&&boolePlot
+if (numbBounded>0)&&boolePlot
     figure; grid; hold on;
     %create voronoi diagram on the point pattern
     voronoi(xx,yy);
     %plot the underlying point pattern
     scatter(xx,yy,'bo');
-    %put a red o uniformally in each bounded Voronoi cell
+    %put a red o uniformly in each bounded Voronoi cell
     scatter(uu,vv,'ro');
     % put a green * on the base station of each Voronoi bounded cell
     scatter(xx(indexBound),yy(indexBound),'g*');

@@ -23,7 +23,7 @@
 # A Voronoi diagram is displayed over the underlying point pattern.
 # Points of the underlying point pattern are marked green and blue if they
 # are located respectively in bounded and unbounded Voronoi cells.
-# The uniformally placed points in the bounded cells are marked red.
+# The uniformly placed points in the bounded cells are marked red.
 #
 # If there are no bounded Voronoi cells, no diagram is created.
 #
@@ -95,7 +95,7 @@ for ss in range(numbSim):
     yCentEmp[indexBounded]=yCentEmp[indexBounded]+vv;
 
 ### END -- Randomly place a point in a Voronoi cell -- END###
-numbBound=len(indexBounded); #number of bounded cells
+numbBounded=len(indexBounded); #number of bounded cells
 
 #estimate empirical centroids
 xCentEmp=xCentEmp[indexBounded]/numbSim; 
@@ -118,22 +118,22 @@ def funCentroid(x,y):
     
 
 #initiate arrays for (analtic) calculations of centroids
-xCentExact=np.zeros(numbBound); #x component 
-yCentExact=np.zeros(numbBound); #x component 
+xCentExact=np.zeros(numbBounded); #x component 
+yCentExact=np.zeros(numbBounded); #x component 
 #loop through for all bounded cells and calculate centroids
-for ii in range(numbBound):
+for ii in range(numbBounded):
     xxCell=vertexAll[cellAll[indexP2C[indexBounded[ii]]],0];
     yyCell=vertexAll[cellAll[indexP2C[indexBounded[ii]]],1];
     xCent,yCent = funCentroid(xxCell,yyCell);
     xCentExact[ii]=xCent; yCentExact[ii]=yCent;
 
 ####START -- Plotting section -- START###
-if (numbBound>0) and (boolePlot):
+if (numbBounded>0) and (boolePlot):
     #create voronoi diagram on the point pattern
     voronoi_plot_2d(voronoiData, show_points=False,show_vertices=False); 
     #plot the underlying point pattern
     plt.scatter(xx, yy, edgecolor='b', facecolor='none');
-    #put a red o uniformally in each bounded Voronoi cell
+    #put a red o uniformly in each bounded Voronoi cell
     plt.scatter(uu, vv, edgecolor='r', facecolor='none');
     #put a green star on the base station of each Voronoi bounded cell
     plt.scatter(xx[indexBounded], yy[indexBounded], color='g', marker='*');

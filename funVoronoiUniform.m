@@ -71,7 +71,7 @@ for ii=1:numbCells
     booleBounded(ii)=~(any((cellAll{ii})==1));
     
     %checks if the Voronoi cell is bounded. if bounded, calculates its area
-    %and assigns a single point uniformally in the Voronoi cell.
+    %and assigns a single point uniformly in the Voronoi cell.
     
     %%% START -- Randomly place a point in a Voronoi cell -- START%%%
     if booleBounded(ii)
@@ -109,7 +109,7 @@ for ii=1:numbCells
         %create two uniform random variables on unit interval
         uniRand1=rand(1,1); uniRand2=rand(1,1);
         
-        %point is uniformally placed in the triangle via equation (1)in [2]
+        %point is uniformly placed in the triangle via equation (1)in [2]
         %x coordinate
         uu(ii)=(1-sqrt(uniRand1))*xxTri(1)...
             +sqrt(uniRand1)*(1-uniRand2)*xxTri(2)...
