@@ -4,13 +4,13 @@ Uniformly places a random point in all *bounded* cells of a two-dimensional Voro
 If you use this code in a research publication, please cite this repository:
 
 @misc{keeler2019voronoi,
-  author = {Keeler, H.P.},
-  title = {Uniform placement of random points in bounded Voronoi cells},
-  year = {2019},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/hpkeeler/voronoi_uniform}},
-  commit = {bdb3a6239476c6cebc8ef63953a3215027e65d66}
+author = {Keeler, H.P.},
+title = {Uniform placement of random points in bounded Voronoi cells},
+year = {2019},
+publisher = {GitHub},
+journal = {GitHub repository},
+howpublished = {\url{https://github.com/hpkeeler/voronoi_uniform}},
+commit = {bdb3a6239476c6cebc8ef63953a3215027e65d66}
 }
 
 
