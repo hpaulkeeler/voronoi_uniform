@@ -13,8 +13,7 @@ howpublished = {\url{github.com/hpaulkeeler/voronoi_uniform}},
 commit = {dc3ab3c5d27d96c18969fc9b201b376c2251c423}
 }
 
-
-The MATLAB and Python code do essentially the same thing, with the key functions respectively being located in funVoronoiUniform.m and funVoronoiUniform.py. More details are found in the comments in  the files. To create a Voronoi/Dirichlet tesselation, either the MATLAB[1] or SciPy[2] function needs to be run, depending on which language is being used.
+The MATLAB and Python code do essentially the same thing, which can be verified with a given (ie non-random) point pattern. The key functions are respectively located in funVoronoiUniform.m and funVoronoiUniform.py. More details are found in the comments in  the files. To create a Voronoi/Dirichlet tesselation, either the MATLAB function voronoin[1] or the SciPy function Voronoi[2] needs to be run, depending on which language is being used. (Note: The MATLAB code uses a Voronoi tesselation created by the MATLAB function voronoin[1], and not the MATLAB function voronoi, which creates different data structures.)
 
 The random (uniform) placement step is done by first dividing each (bounded) Voronoi cell (ie an irregular polygon) with, say, m sides into m scalene triangles. The i th triangle is then randomly chosen based on the ratio of areas. A point is then uniformly placed on the i-th triangle (via eq. 1 in [3]). The random (uniform) placement step is repeated for all *bounded* Voronoi cells.
 
