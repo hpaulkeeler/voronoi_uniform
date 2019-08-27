@@ -10,7 +10,7 @@ year = {2019},
 publisher = {GitHub},
 journal = {GitHub repository},
 howpublished = {\url{https://github.com/hpkeeler/voronoi_uniform}},
-commit = {bdb3a6239476c6cebc8ef63953a3215027e65d66}
+commit = {dc3ab3c5d27d96c18969fc9b201b376c2251c423}
 }
 
 
