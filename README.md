@@ -20,6 +20,8 @@ The random (uniform) placement step is done by first dividing each (bounded) Vor
 To test the functions, run VoronoiUniformTest.m or VoronoiUniformTest.py (with the aforementioned files in the same directory/folder). For a given point pattern (for example, a realization of a Poisson point process), these files run the function funVoronoiUniform repeatedly over number of simulations. For each simulation, a single random  point is uniformly placed in each *bounded* cell. Then the averages  of the Cartesian components of the uniformly placed points are then taken.  As the number of simulations (of placing single points) increases, these averages should converge to the centroids (or geometric centres) of all the *bounded* Voronoi cells.
 
 Author: H.Paul Keeler, 2019 
+
+References:
 [1] http://www.mathworks.com.au/help/matlab/ref/voronoin.html
 
 [2]  http://scipy.github.io/devdocs/generated/scipy.spatial.Voronoi.html
