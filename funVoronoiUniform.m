@@ -24,9 +24,9 @@
 %
 % OUTPUTS:
 % uu and vv are vectors corresponding to the Cartesian coordinates of the
-% uniformly placed points.
+% uniformly placed points in bounded Voronoi cells.
 %
-% indexBounded is an index vector for the bounded cells.
+% indexBounded is an index vector for the bounded Voronoi cells.
 %
 % EXAMPLE: consider a point pattern described by 1-D arrays xx and yy,
 % correspondong to the Cartesian coordinates. Then run the MATLAB function
