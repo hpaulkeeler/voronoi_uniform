@@ -41,7 +41,7 @@
 # References: 
 # [1] http://scipy.github.io/devdocs/generated/scipy.spatial.Voronoi.html
 # [2] http://www.qhull.org/
-# [2] Osada, R., Funkhouser, T., Chazelle, B. and Dobkin. D.,
+# [3] Osada, R., Funkhouser, T., Chazelle, B. and Dobkin. D.,
 # "Shape distributions", ACM Transactions on Graphics, vol 21, issue 4,
 # 2002
 
