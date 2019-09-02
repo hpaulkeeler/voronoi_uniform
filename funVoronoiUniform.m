@@ -3,18 +3,24 @@
 % tesselation (also called a Voronoi diagram or Dirichlet tesselation).
 % This code uses a Voronoi tessellation based on an arbitrary 
 % two-dimensional point pattern. The Voronoi tesselation is first found 
-% using the MATLAB function[1], which is based on the Qhull project[2].
+% using the MATLAB function voronoin [1], which is based on the Qhull 
+% project[2].
+%
+% NOTE: This code uses a Voronoi tesselation created by the MATLAB 
+% function voronoin[1], and not the MATLAB function voronoi.
 %
 % INPUTS:
-% xx and yy are vectors correspondong to the Cartesian coordinates of the
-% points in the underlying point pattern. xx and yy must have the
-% same length.
 %
 % vertexAll is an array with the Cartesian ccordinates of all the vertices
 % of the Voronoi tessellation.
+%
 % cellAll structure array, where each entry is an array of indices of the
 % vertices describing the Voronoi tesselation; see MATLAB function
 % voronoin[1].
+%
+% xx and yy are vectors correspondong to the Cartesian coordinates of the
+% points in the underlying point pattern. xx and yy must have the
+% same length.
 %
 % OUTPUTS:
 % uu and vv are vectors corresponding to the Cartesian coordinates of the
@@ -39,9 +45,6 @@
 % The i th triangle is then randomly chosen based on the ratio of areas.
 % A point is then uniformly placed on the i th triangle (via eq. 1 in [3]).
 % The random placement step is repeated for all bounded Voronoi cells.
-%
-% NOTE: This code uses a Voronoi tesselation created by the MATLAB 
-% function voronoin[1], and not the MATLAB function voronoi.
 %
 % Author: H.Paul Keeler, 2019.
 % hpaulkeeler.com
