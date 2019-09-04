@@ -95,17 +95,17 @@ for ii=1:numbCells
         indexVertex(end)=1; %repeat first index (ie returns to the start)
         indexVertex1=indexVertex(1:numbTri); %first vertex index
         indexVertex2=indexVertex(2:numbTri+1);  %second vertex index
-        %using area equation for a triangle
+        %calculate areas of triangles using shoelace formula
         areaTri=abs((xxCell(indexVertex1)-xx0).*(yyCell(indexVertex2)-yy0)...
             -(xxCell(indexVertex2)-xx0).*(yyCell(indexVertex1)-yy0))/2;
-        areaPoly=sum(areaTri);
+        areaPoly=sum(areaTri); %total area of cell/polygon
         %%%END-- Caclulate areas of triangles -- END%%%
         
         %%%START -- Randomly placing point -- START%%%
         %%% place a point uniformaly in the (bounded) polygon
         %randomly choose the triangle (from the set that forms the polygon)
-        cdfArea=cumsum(areaTri)/areaPoly; %create triangle CDF
-        indexTri=find(rand(1,1)<=cdfArea,1); %use CDF to choose #
+        cdfTri=cumsum(areaTri)/areaPoly; %create triangle CDF
+        indexTri=find(rand(1,1)<=cdfTri,1); %use CDF to choose #
         
         indexVertex1=indexVertex(indexTri); %first vertex index
         indexVertex2=indexVertex(indexTri+1); %second vertex index
@@ -117,11 +117,11 @@ for ii=1:numbCells
         uniRand1=rand(1,1); uniRand2=rand(1,1);
         
         %point is uniformly placed in the triangle via equation (1)in [2]
-        %x coordinate
+        %x coordinate (via eq. 1 in [3])
         uu(ii)=(1-sqrt(uniRand1))*xxTri(1)...
             +sqrt(uniRand1)*(1-uniRand2)*xxTri(2)...
             +sqrt(uniRand1)*uniRand2*xxTri(3);
-        %y coordinate
+        %y coordinate (via eq. 1 in [3])
         vv(ii)=(1-sqrt(uniRand1))*yyTri(1)...
             +sqrt(uniRand1)*(1-uniRand2)*yyTri(2)...
             +sqrt(uniRand1)*uniRand2*yyTri(3);
@@ -132,5 +132,7 @@ for ii=1:numbCells
 end
 
 indexBounded=find(booleBounded==1); %find bounded cells
-uu=uu(indexBounded); vv=vv(indexBounded); %remove unbounded cells
+%remove unbounded cells
+uu=uu(indexBounded); 
+vv=vv(indexBounded); 
 end
