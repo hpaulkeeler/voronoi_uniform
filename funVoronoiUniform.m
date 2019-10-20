@@ -67,7 +67,7 @@ end
 
 numbCells=length(xx); %number of Voronoi cells (including unbounded ones)
 
-%initiate arrays
+%initialize  arrays
 booleBounded=zeros(numbCells,1);
 uu=zeros(numbCells,1);
 vv=zeros(numbCells,1);

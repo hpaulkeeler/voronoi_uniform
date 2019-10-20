@@ -60,7 +60,7 @@ def funVoronoiUniform(voronoiData):
     
     indexP2C=voronoiData.point_region; #index mapping between cells and points
     
-    ##initiate arrays
+    ##initialize  arrays
     booleBounded=np.zeros(numbCells,dtype=bool);
     uu=np.zeros(numbCells);
     vv=np.zeros(numbCells);

@@ -85,7 +85,7 @@ cellAll=voronoiData.regions; #may contain empty array/set
 numbCells=numbPoints; #number of Voronoi cells (including unbounded)
 indexP2C=voronoiData.point_region; #index mapping between cells and points
 
-#initiate arrays for empirical estimates of centroids
+#initialize  arrays for empirical estimates of centroids
 xCentEmp=np.zeros(numbCells); #x component 
 yCentEmp=np.zeros(numbCells); #y component 
 #Loop through for multiple simulations 
@@ -118,7 +118,7 @@ def funCentroid(x,y):
     return(xCentroid, yCentroid)
     
 
-#initiate arrays for (analtic) calculations of centroids
+#initialize  arrays for (analtic) calculations of centroids
 xCentExact=np.zeros(numbBounded); #x component 
 yCentExact=np.zeros(numbBounded); #x component 
 #loop through for all bounded cells and calculate centroids

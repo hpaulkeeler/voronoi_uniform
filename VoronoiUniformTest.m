@@ -75,7 +75,7 @@ xxyy=[xx yy]; %combine x and y coordinates
 %Perform Voronoi tesseslation using built-in function voronoin
 [vertexAll,cellAll]=voronoin(xxyy);
 
-%initiate arrays for empirical estimates of centroids
+%initialize  arrays for empirical estimates of centroids
 xCentEmp=zeros(numbCells,1); %x component
 yCentEmp=zeros(numbCells,1); %y component
 %Loop through for multiple simulations
@@ -91,7 +91,7 @@ numbBounded=length(indexBound); %number of bounded cells
 xCentEmp=xCentEmp(indexBound)/numbSim;
 yCentEmp=yCentEmp(indexBound)/numbSim;
 
-%initiate arrays for (analtic) calculations of centroids
+%initialize  arrays for (analtic) calculations of centroids
 xCentExact=zeros(numbBounded,1); %x component
 yCentExact=zeros(numbBounded,1); %y component
 %loop through for all bounded cells and calculate centroids
