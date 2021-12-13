@@ -2,14 +2,14 @@
 % random point uniformly on *boundeded* Voronoi cells in two dimensions.
 %
 % For the test, a single realization of a (homogeneous) Poisson point
-% process (PPP) is first generated on a rectangle (but any (finite) 
-% two-dimensional point pattern can be used). Then the Voronoi tesselation 
-% is created by using the MATLAB function[1], which is based on the Qhull 
-% project[2]. Then the function funVoronoiUniform is (repeatedly) used to 
-% uniformly place a single random point in each *bounded* Voronoi cell. 
-% The averages of these random single points are then taken. As the number 
-% of simulations (of placing single points) increases, these averages 
-% should converge to the centroids (or geometric centres) of all the 
+% process (PPP) is first generated on a rectangle (but any (finite)
+% two-dimensional point pattern can be used). Then the Voronoi tesselation
+% is created by using the MATLAB function[1], which is based on the Qhull
+% project[2]. Then the function funVoronoiUniform is (repeatedly) used to
+% uniformly place a single random point in each *bounded* Voronoi cell.
+% The averages of these random single points are then taken. As the number
+% of simulations (of placing single points) increases, these averages
+% should converge to the centroids (or geometric centres) of all the
 % *bounded* Voronoi cells.
 %
 % The placement step is done by first dividing each *bounded* Voronoi cell
@@ -85,17 +85,17 @@ for ss=1:numbSim
     xCentEmp(indexBound)=xCentEmp(indexBound)+uu;
     yCentEmp(indexBound)=yCentEmp(indexBound)+vv;
 end
-numbBounded=length(indexBound); %number of bounded cells
+numbBound=length(indexBound); %number of bounded cells
 
 %estimate empirical centroids
 xCentEmp=xCentEmp(indexBound)/numbSim;
 yCentEmp=yCentEmp(indexBound)/numbSim;
 
 %initialize  arrays for (analtic) calculations of centroids
-xCentExact=zeros(numbBounded,1); %x component
-yCentExact=zeros(numbBounded,1); %y component
+xCentExact=zeros(numbBound,1); %x component
+yCentExact=zeros(numbBound,1); %y component
 %loop through for all bounded cells and calculate centroids
-for ii=1:numbBounded
+for ii=1:numbBound
     xxCell=vertexAll(cellAll{indexBound(ii)},1);
     yyCell=vertexAll(cellAll{indexBound(ii)},2);
     polyin = polyshape(xxCell,yyCell);
@@ -104,7 +104,7 @@ for ii=1:numbBounded
 end
 
 %%%START -- Plotting section -- START%%%
-if (numbBounded>0)&&boolePlot
+if (numbBound>0)&&boolePlot
     figure; grid; hold on;
     %create voronoi diagram on the point pattern
     voronoi(xx,yy);

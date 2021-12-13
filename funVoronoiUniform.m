@@ -57,7 +57,7 @@
 % "Shape distributions", ACM Transactions on Graphics, vol 21, issue 4,
 % 2002
 
-function [uu,vv, indexBounded]=funVoronoiUniform(vertexAll,cellAll,xx,yy)
+function [uu,vv, indexBound]=funVoronoiUniform(vertexAll,cellAll,xx,yy)
 %reshape vectors (possibly not necessary if they are already column vectors)
 xx=xx(:); yy=yy(:);
 
@@ -68,20 +68,20 @@ end
 numbCells=length(xx); %number of Voronoi cells (including unbounded ones)
 
 %initialize  arrays
-booleBounded=zeros(numbCells,1);
+booleBound=zeros(numbCells,1);
 uu=zeros(numbCells,1);
 vv=zeros(numbCells,1);
 
 %Loop through for all Voronoi cells
 for ii=1:numbCells
     %check for unbounded cells (index 1 corresponds to a point at infinity)
-    booleBounded(ii)=~(any((cellAll{ii})==1));
+    booleBound(ii)=~(any((cellAll{ii})==1));
     
     %checks if the Voronoi cell is bounded. if bounded, calculates its area
     %and assigns a single point uniformly in the Voronoi cell.
     
     %%% START -- Randomly place a point in a Voronoi cell -- START%%%
-    if booleBounded(ii)
+    if booleBound(ii)
         xx0=xx(ii);yy0=yy(ii); %the (Poisson) point of the Voronoi cell
         %x/y values for current cell
         xxCell=vertexAll(cellAll{ii},1);
@@ -131,8 +131,8 @@ for ii=1:numbCells
     %%% END -- Randomly place a point in a Voronoi cell -- END%%%
 end
 
-indexBounded=find(booleBounded==1); %find bounded cells
+indexBound=find(booleBound==1); %find bounded cells
 %remove unbounded cells
-uu=uu(indexBounded); 
-vv=vv(indexBounded); 
+uu=uu(indexBound); 
+vv=vv(indexBound); 
 end
